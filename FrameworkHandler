@@ -42,3 +42,5 @@ end
 Handler.SetPrefix = function(Prefix)
     Handler["Prefix"] = Prefix
 end
+
+return Handler
