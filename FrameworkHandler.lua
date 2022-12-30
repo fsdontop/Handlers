@@ -10,8 +10,12 @@ Handler.AddCommand = function(CommandName, Description, MainFunction, Arguments)
     end
 end
 
-Handler.CheckCommand = function(CommandName)
+Handler.CheckCommand = function(CommandName, IsChatted)
     CommandName = string.lower(CommandName)
+
+    if IsChatted and string.sub(CommandName, 1, 1) ~= Handler.Prefix then
+        return
+    end
 
     local SplittedCN = string.split(CommandName, " ")
     local Arguments = string.split(CommandName, " ")
@@ -35,6 +39,12 @@ Handler.CheckCommand = function(CommandName)
             end
         end
     end
+end
+
+Handler.InitializeChattedConnection = function()
+    game:GetService("Players").LocalPlayer.Chatted:Connect(function(Message)
+        Handler.CommandCheck(Message, true)
+    end)
 end
 
 Handler.SetPrefix = function(Prefix)
