@@ -43,7 +43,7 @@ end
 
 Handler.InitializeChattedConnection = function()
     game:GetService("Players").LocalPlayer.Chatted:Connect(function(Message)
-        Handler.CommandCheck(Message, true)
+        Handler.CheckCommand(Message, true)
     end)
 end
 
