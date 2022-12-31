@@ -1,6 +1,7 @@
 local Handler = {}
 
 Handler["Commands"] = {}
+Handler["Events"] = {}
 
 Handler.AddCommand = function(CommandName, Description, MainFunction, Arguments)
     if Arguments then
@@ -42,13 +43,19 @@ Handler.CheckCommand = function(CommandName, IsChatted)
 end
 
 Handler.InitializeChattedConnection = function()
-    game:GetService("Players").LocalPlayer.Chatted:Connect(function(Message)
+    Handler.Events.Chatted = game:GetService("Players").LocalPlayer.Chatted:Connect(function(Message)
         Handler.CheckCommand(Message, true)
     end)
 end
 
 Handler.SetPrefix = function(Prefix)
     Handler["Prefix"] = Prefix
+end
+
+Handler.Stop = function()
+    for _, Event in pairs(Handler.Events) do
+        Event:Disconnect();
+    end
 end
 
 return Handler
