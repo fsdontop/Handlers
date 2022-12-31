@@ -58,6 +58,4 @@ Handler.Stop = function()
     end
 end
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/fsdontop/Libraries/main/Init.lua"))()
-
 return Handler
