@@ -25,8 +25,10 @@ Handler.CheckCommand = function(CommandName, IsChatted)
 
     if string.sub(CommandName, 1, 1) == Handler.Prefix then
         CommandName = string.sub(SplittedCN[1], 2)
+    else
+        CommandName = SplittedCN[1]
     end
-
+    
     for _, Command in ipairs(Handler.Commands) do
         local Aliases = string.split(Command[1], "/")
 
