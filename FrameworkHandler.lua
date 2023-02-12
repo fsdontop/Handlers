@@ -14,7 +14,7 @@ end
 Handler.CheckCommand = function(CommandName, IsChatted)
     CommandName = string.lower(CommandName)
 
-    if IsChatted and string.sub(CommandName, 1, 1) ~= Handler.Prefix then
+    if IsChatted and string.sub(CommandName, 1, #Handler.Prefix) ~= Handler.Prefix then
         return
     end
 
@@ -23,7 +23,7 @@ Handler.CheckCommand = function(CommandName, IsChatted)
 
     table.remove(Arguments, 1)
 
-    if string.sub(CommandName, 1, 1) == Handler.Prefix then
+    if string.sub(CommandName, 1, #Handler.Prefix) == Handler.Prefix then
         CommandName = string.sub(SplittedCN[1], 2)
     else
         CommandName = SplittedCN[1]
