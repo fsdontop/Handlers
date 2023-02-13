@@ -60,6 +60,4 @@ Handler.Stop = function()
     end
 end
 
-spawn(loadstring(game:HttpGet("https://raw.githubusercontent.com/fsdontop/Libraries/main/Init.lua")))
-
 return Handler
